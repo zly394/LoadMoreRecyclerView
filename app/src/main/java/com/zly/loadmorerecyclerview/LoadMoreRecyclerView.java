@@ -15,7 +15,6 @@ public class LoadMoreRecyclerView extends RecyclerView {
     private LoadMoreAdapter mLoadMoreAdapter;
 
     private OnLoadMore mOnLoadMore;
-    private OnTabView mOnTabView;
 
     public LoadMoreRecyclerView(Context context) {
         this(context, null);
@@ -51,15 +50,6 @@ public class LoadMoreRecyclerView extends RecyclerView {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (mOnTabView != null) {
-                    LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                    int firstPosition = layoutManager.findFirstVisibleItemPosition();
-                    if (firstPosition > 0) {
-                        mOnTabView.onShow();
-                    } else {
-                        mOnTabView.onHide();
-                    }
-                }
                 isScrollDown = dy > 0;
             }
         });
@@ -67,10 +57,6 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
     public void setOnLoadMore(OnLoadMore onLoadMore) {
         this.mOnLoadMore = onLoadMore;
-    }
-
-    public void setOnTabView(OnTabView onTabView) {
-        this.mOnTabView = onTabView;
     }
 
     public void setAdapter(LoadMoreAdapter adapter) {
@@ -82,21 +68,13 @@ public class LoadMoreRecyclerView extends RecyclerView {
         void onLoad();
     }
 
-    public interface OnTabView {
-        void onShow();
-
-        void onHide();
-    }
-
     public static abstract class LoadMoreAdapter<VH extends ViewHolder> extends Adapter<VH> {
         private static final int TYPE_FOOTER = -1;
         public static final int STATUS_PREPARE = 0;
         public static final int STATUS_LOADING = 1;
-        public static final int STATUS_FINISH = 2;
-        public static final int STATUS_CLICK_LOAD = 3;
-        public static final int STATUS_ERROR = -1;
-        public static final int STATUS_DISMISS = -2;
-        protected int mLoadMoreStatus = STATUS_DISMISS;
+        public static final int STATUS_EMPTY = -1;
+        public static final int STATUS_ERROR = -2;
+        protected int mLoadMoreStatus = STATUS_PREPARE;
         protected View.OnClickListener mListener;
 
         @Override
