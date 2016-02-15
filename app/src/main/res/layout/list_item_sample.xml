@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv_item"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:gravity="center"
-    android:padding="8dp"
-    tools:text="item" />
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_item"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:padding="8dp"
+        tools:text="item" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B2B2b2"/>
+
+</LinearLayout>
