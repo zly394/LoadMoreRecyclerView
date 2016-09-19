@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.zly.loadmorerecyclerview.SampleActivity">
+    <item
+        android:id="@+id/action_list"
+        android:title="List"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_grid"
+        android:title="Grid"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_staggered_grid"
+        android:title="StaggeredGrid"
+        app:showAsAction="never" />
+</menu>

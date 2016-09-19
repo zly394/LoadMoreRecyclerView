@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by zhuleiyue on 16/1/26.
@@ -31,8 +30,12 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleAdapter.ItemViewHo
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        holder.tvItem.setText(mData.get(position));
-        holder.itemView.setPadding(0, 0, 0, 100 + new Random().nextInt(100));
+        StringBuilder builder = new StringBuilder(mData.get(position));
+        for (int i = 0; i < position % 3; i++) {
+            builder.append("\n");
+            builder.append(mData.get(position));
+        }
+        holder.tvItem.setText(builder);
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {
